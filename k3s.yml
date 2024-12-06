@@ -1,0 +1,19 @@
+---
+- name: Install k3s single-node cluster
+  hosts: localhost
+  become: yes
+  tasks:
+    - name: Install dependencies
+      apt:
+        name: curl
+        state: present
+    
+    - name: Install k3s
+      shell: |
+        curl -sfL https://get.k3s.io | sh -
+      args:
+        creates: /usr/local/bin/k3s
+
+    - name: Verify k3s installation
+      command: k3s --version
+
