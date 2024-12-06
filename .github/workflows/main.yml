@@ -16,4 +16,5 @@ jobs:
 
       - name: Apply Kubernetes manifests
         run: |
-          kubectl apply -f helloworld.yml
+          kubectl apply -f helloworld.yml --validate=false
+
